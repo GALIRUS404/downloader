@@ -1,0 +1,102 @@
+#!/bin/bash
+e="echo -e "
+m="\033[1;31m"   # Merah (sudah diberikan)
+h="\033[1;32m"   # Hijau (sudah diberikan)
+k="\033[1;33m"   # Kuning (sudah diberikan)
+b="\033[1;34m"   # Biru (sudah diberikan)
+bl="\033[1;36m"  # Biru Muda (sudah diberikan)
+p="\033[1;37m"   # Putih (sudah diberikan)
+u="\033[1;35m"   # Ungu
+pu="\033[1;30m"  # Abu-abu
+c="\033[1;96m"   # Cyan Terang
+bg_m="\033[41m"  # Latar Belakang Merah
+bg_h="\033[42m"  # Latar Belakang Hijau
+bg_k="\033[43m"  # Latar Belakang Kuning
+bg_b="\033[44m"  # Latar Belakang Biru
+bg_bl="\033[46m" # Latar Belakang Biru Muda
+bg_p="\033[47m"  # Latar Belakang Putih
+bg_u="\033[45m"  # Latar Belakang Ungu
+bg_pu="\033[40m" # Latar Belakang Abu-abu
+res="\033[0m"    # Reset semua atribut
+galirus() {
+       pesan=("Halo, dunia!" "Semangat terus!" "Jangan Dengarkan Apa Kata Mereka!" "Pemrograman Bash itu seru!" "Semoga harimu menyenangkan!" "Tetap positif!" "Persetan Untuk Kang Recode!" "Koding Itu Menyenangkan!")
+       jumlah=${#pesan[@]}
+       pesan_acak=${pesan[$RANDOM % $jumlah]}
+       cowsay -f eyes "$pesan_acak"
+       $e "
+       GALIRUS™ X GUSTI™⠀⠀ ⠀⠀⠀⠀⠀⠀⠀
+       DOWNLOADER NO WATERMARK
+       SUBSCRIBE GALIRUS OFFICIAL⠀⠀⠀⠀⠀⠀"
+}
+kerjonekbash="/data/data/com.termux/files/usr/bin/gal"
+if [ -f "$kerjonekbash" ]; then
+       clear
+       download_media() {
+              url=$1
+              if [[ -z "$url" ]]; then
+                     galirus | lolcat
+                     $e
+                     $e
+                     $e $pu $bg_bl"Masukkan URL :$bg_k gal https://vm.tiktok.com/ZS2xWoyfV/"$res
+                     $e $pu $bg_p"Bisa juga untuk$bg_m Yt Mp4/Mp3, Pinterest, Facebook,TikTok"$res
+                     echo
+                     echo
+                     exit 1
+              fi
+              file_name="/storage/emulated/0/GALIRUS_X_GUSTI_$(date +%s)"
+              case "$url" in
+                     *tiktok.com*)
+                            file_name="${file_name}.mp4"
+                            yt-dlp --no-warnings -o "$file_name" "$url"
+                            ;;
+                     *youtube.com* | *youtu.be*)
+                            file_name="${file_name}.mp4"
+                            yt-dlp --no-warnings -o "$file_name" "$url"
+                            ;;
+                     *pinterest.com* | *pin.it*)
+                            file_name="${file_name}.mp4"
+                            yt-dlp --no-warnings -o "$file_name" "$url"
+                            ;;
+                     *facebook.com*)
+                            file_name="${file_name}.mp4"
+                            yt-dlp --no-warnings -o "$file_name" "$url"
+                            ;;
+                     *soundcloud.com*)
+                            file_name="${file_name}.mp3"
+                            yt-dlp --no-warnings -x --audio-format mp3 -o "$file_name" "$url"
+                            ;;
+                     *)
+                            clear
+                            $e $bg_m "URL tidak didukung"$res
+                            $e
+                            $e
+                            exit 1
+                            ;;
+              esac
+              if [ $? -eq 0 ]; then
+                     clear
+                     galirus | lolcat
+                     $e
+                     $e
+                     $e $bg_m "Media berhasil diunduh dan disimpan di : \n$file_name"$res
+                     $e
+                     $e
+              else
+                     clear
+                     galirus | lolcat
+                     $e
+                     $e
+                     $e $bg_m "Gagal mengunduh media"$res
+                     $e
+                     $e
+              fi
+       }
+       download_media "$1"
+else
+       mv -f gal /data/data/com.termux/files/usr/bin/
+       chmod 777 /data/data/com.termux/files/usr/bin/gal
+       touch "$kerjonekbash"
+       clear
+       $e $bg_m " Cobak Ketik gal"$res
+       exit 0
+fi
