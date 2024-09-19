@@ -18,6 +18,8 @@ bg_p="\033[47m"  # Latar Belakang Putih
 bg_u="\033[45m"  # Latar Belakang Ungu
 bg_pu="\033[40m" # Latar Belakang Abu-abu
 res="\033[0m"    # Reset semua atribut
+git stash &>/dev/null
+git pull origin main &>/dev/null
 galirus() {
        pesan=("Halo, dunia!" "Semangat terus!" "Jangan Dengarkan Apa Kata Mereka!" "Pemrograman Bash itu seru!" "Semoga harimu menyenangkan!" "Tetap positif!" "Persetan Untuk Kang Recode!" "Koding Itu Menyenangkan!")
        jumlah=${#pesan[@]}
