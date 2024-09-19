@@ -93,6 +93,18 @@ if [ -f "$kerjonekbash" ]; then
        }
        download_media "$1"
 else
+       clear
+       play -q $HOME/Lubeban/sound/salah.mp3 &> /dev/null &
+       $e $k $bg_m "Packaging Belum Terinstall Bentar Tod !$res"
+       echo
+       sleep 3
+       apt update
+       apt install cowsay -y
+       apt install ruby -y
+       gem install lolcat
+       apt install -y wget ffmpeg
+       wget https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp -O $PREFIX/bin/yt-dlp
+       chmod a+rx $PREFIX/bin/yt-dlp
        mv -f gal /data/data/com.termux/files/usr/bin/
        chmod 777 /data/data/com.termux/files/usr/bin/gal
        touch "$kerjonekbash"
